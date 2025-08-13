@@ -88,39 +88,24 @@
     @endforeach
 </div>
 
+
 <!--Testimonials-->
 <h1 class="mt-10 text-center font-playfairdisplay text-4xl font-bold">Testimonials</h1>
 <div class="flex flex-col md:flex-row justify-center items-stretch gap-8 my-8">
-    <div class="card bg-base-100 shadow-sm p-6 w-full md:w-80">
+   @foreach($users as $user)
+<div class="card bg-base-100 shadow-sm p-6 w-full md:w-80">
         <div class="flex items-center gap-4 mb-4">
-            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" class="w-12 h-12 rounded-full border-2 border-primary" />
+            <img src="{{ asset($user->pic) }}" alt="User" class="w-12 h-12 rounded-full border-2 border-primary" />
             <div>
-                <h3 class="font-bold text-lg">Amina N.</h3>
-                <span class="text-sm text-gray-500">Nairobi</span>
+                <h3 class="font-bold text-lg">{{$user->name}}</h3>
+                <span class="text-sm text-gray-500">{{$user->title}}</span>
             </div>
         </div>
-        <p class="text-gray-700">"An unforgettable experience! Kenya's landscapes and people are truly amazing. Highly recommend booking with Trvl."</p>
+        <p class="text-gray-700">{{$user->bio}}</p>
     </div>
-    <div class="card bg-base-100 shadow-sm p-6 w-full md:w-80">
-        <div class="flex items-center gap-4 mb-4">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="w-12 h-12 rounded-full border-2 border-primary" />
-            <div>
-                <h3 class="font-bold text-lg">John K.</h3>
-                <span class="text-sm text-gray-500">Mombasa</span>
-            </div>
-        </div>
-        <p class="text-gray-700">"The booking process was smooth and the destinations exceeded my expectations. Will travel again!"</p>
-    </div>
-    <div class="card bg-base-100 shadow-sm p-6 w-full md:w-80">
-        <div class="flex items-center gap-4 mb-4">
-            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="User" class="w-12 h-12 rounded-full border-2 border-primary" />
-            <div>
-                <h3 class="font-bold text-lg">Grace W.</h3>
-                <span class="text-sm text-gray-500">Kisumu</span>
-            </div>
-        </div>
-        <p class="text-gray-700">"Loved every moment! The team was helpful and the adventures were breathtaking."</p>
-    </div>
+    @endforeach
+
+    
 </div>
 
 @endsection

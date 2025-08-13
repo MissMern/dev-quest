@@ -15,6 +15,9 @@ class DestinationsController extends Controller
         public function index()
         {
             $destinations = DB::select('EXEC get_all_destinations');
-            return view('welcome', compact('destinations'));
+            $users =DB::select('EXEC get_all_users');
+            
+
+            return view('welcome', compact('destinations','users'));
         }
 }
