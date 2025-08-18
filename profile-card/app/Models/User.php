@@ -25,6 +25,8 @@ class User extends Authenticatable
         'pic',
         'bio',
         'links',
+        'country',
+        'comment',
     ];
 
     /**
@@ -47,6 +49,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'links' => 'array',
         ];
     }
 }

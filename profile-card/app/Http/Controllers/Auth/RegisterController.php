@@ -50,12 +50,14 @@ class RegisterController extends Controller
 {
     return Validator::make($data, [
         'name' => ['required', 'string', 'max:255'],
+        'country' => ['nullable', 'string', 'max:255'],
         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         'password' => ['required', 'string', 'min:8', 'confirmed'],
         'title' => ['nullable', 'string', 'max:255'],
         'pic' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
         'bio' => ['nullable', 'string'],
-        'links' => ['nullable', 'json'],
+        'comment' => ['nullable', 'string','max:255'],
+        'links' => ['nullable', 'array'],
     ]);
 }
     /**
@@ -74,12 +76,14 @@ class RegisterController extends Controller
 
     return User::create([
         'name' => $data['name'],
+        'country' => $data['country'],
         'email' => $data['email'],
         'password' => Hash::make($data['password']),
         'title' => $data['title'] ?? null,
         'pic' => $picPath,
         'bio' => $data['bio'] ?? null,
-        'links' => $data['links'] ?? null,
+        'comment' => $data['comment'],
+        'links' => isset($data['links']) ? json_encode($data['links']) : null,
     ]);
 }
 }
